@@ -1,23 +1,28 @@
 import React from 'react';
-import Button from './index';
+import Button, { ButtonProps } from './index';
+import { Story, Meta } from '@storybook/react';
 
 export default {
   title: 'components/Button',
   component: Button,
-};
+  argTypes: {
+    children: {
+      control: { type: 'text' },
+    },
+    theme: {
+      control: {
+        type: 'select',
+        options: ['default', 'primary', 'secondary'],
+      },
+    },
+    onClick: { action: 'clicked !!' },
+  },
+} as Meta;
 
-export const button = () => {
-  return <Button>BUTTON</Button>;
-};
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-button.story = {
-  name: 'Default',
-};
-
-export const primaryButton = () => {
-  return <Button theme="primary">PRIMARY</Button>;
-};
-
-export const secondaryButton = () => {
-  return <Button theme="secondary">SECONDARY</Button>;
+export const button = Template.bind({});
+button.args = {
+  children: 'button',
+  theme: 'default',
 };
