@@ -27,11 +27,6 @@ const Button = ({ children, color, variant, onClick }: ButtonProps) => {
   );
 };
 
-Button.defaultProps = {
-  color: 'primary',
-  variant: 'contained',
-};
-
 const StyledButton = styled.button<ButtonStyleProps>`
   cursor: pointer;
   outline: none;
