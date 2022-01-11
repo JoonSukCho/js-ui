@@ -9,13 +9,19 @@ export default {
     children: {
       control: { type: 'text' },
     },
-    theme: {
+    color: {
       control: {
         type: 'select',
-        options: ['default', 'primary', 'secondary'],
+        options: ['primary', 'secondary'],
       },
     },
-    onClick: { action: 'clicked !!' },
+    variant: {
+      control: {
+        type: 'select',
+        options: ['text', 'contained', 'outlined'],
+      },
+    },
+    onClick: { action: 'click event : ' },
   },
 } as Meta;
 
@@ -23,6 +29,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const button = Template.bind({});
 button.args = {
-  children: 'button',
-  theme: 'default',
+  children: 'BUTTON',
+  color: 'primary',
+  variant: 'contained',
 };

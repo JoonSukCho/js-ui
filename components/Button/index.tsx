@@ -1,27 +1,38 @@
 import styled, { css } from 'styled-components';
 
-export interface ButtonProps {
+interface ButtonStyleProps {
+  /** 버튼 색상 */
+  color: 'primary' | 'secondary';
+  /** 버튼 모양 */
+  variant: 'text' | 'contained' | 'outlined';
+}
+
+export interface ButtonProps extends ButtonStyleProps {
   /** 버튼 안의 내용 */
   children: React.ReactNode;
   /** 클릭 했을 때 호출할 콜백 함수 */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
-  /** 버튼의 테마 */
-  theme: 'default' | 'primary' | 'secondary';
 }
 
-const Button = ({ children, theme, onClick }: ButtonProps) => {
+const Button = ({ children, color, variant, onClick }: ButtonProps) => {
   return (
-    <StyledButton type="button" onClick={onClick} theme={theme}>
+    <StyledButton
+      type="button"
+      onClick={onClick}
+      color={color}
+      variant={variant}
+    >
       {children}
     </StyledButton>
   );
 };
 
 Button.defaultProps = {
-  theme: 'default',
+  color: 'primary',
+  variant: 'contained',
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonStyleProps>`
   cursor: pointer;
   outline: none;
   border: none;
@@ -35,28 +46,26 @@ const StyledButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  &:focus {
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-  }
+  color: white;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
+  /* color */
+  background-color: ${(props) => props.theme.colors[props.color]};
   ${(props) =>
-    props.theme === 'default' &&
+    props.color === 'primary' &&
     css`
-      background-color: #e9ecef;
-      color: #343a40;
       &:hover {
-        background-color: #f1f3f5;
+        background-color: #5a9bf7;
       }
       &:active {
-        background-color: #dee2e6;
+        background-color: #377cdd;
       }
     `}
 
   ${(props) =>
-    props.theme === 'primary' &&
+    props.color === 'secondary' &&
     css`
-      background-color: #20c997;
-      color: white;
+      background-color: ${({ theme }) => theme.colors.secondary};
       &:hover {
         background-color: #38d9a9;
       }
@@ -65,16 +74,35 @@ const StyledButton = styled.button`
       }
     `}
 
+  /* variant */
   ${(props) =>
-    props.theme === 'secondary' &&
+    props.variant === 'text' &&
     css`
-      background-color: #3182f6;
-      color: white;
+      background-color: transparent;
+      color: ${({ theme }) => theme.colors[props.color]};
       &:hover {
-        background-color: #3e82e2;
+        background-color: rgba(25, 118, 210, 0.04);
       }
-      &:active {
-        background-color: #3e73bd;
+    `}
+
+  ${(props) =>
+    props.variant === 'contained' &&
+    css`
+      background-color: ${({ theme }) => theme.colors[props.color]};
+      color: white;
+      &:focus {
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+      }
+    `}
+
+  ${(props) =>
+    props.variant === 'outlined' &&
+    css`
+      background-color: transparent;
+      color: ${({ theme }) => theme.colors[props.color]};
+      border: 1px solid ${({ theme }) => theme.colors[props.color]};
+      &:hover {
+        background-color: rgba(25, 118, 210, 0.04);
       }
     `}
 `;
