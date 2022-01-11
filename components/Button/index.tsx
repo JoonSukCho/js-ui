@@ -81,7 +81,10 @@ const StyledButton = styled.button<ButtonStyleProps>`
       background-color: transparent;
       color: ${({ theme }) => theme.colors[props.color]};
       &:hover {
-        background-color: rgba(25, 118, 210, 0.04);
+        background-color: rgba(25, 118, 210, 0.1);
+      }
+      &:active {
+        background-color: rgba(25, 118, 210, 0.2);
       }
     `}
 
@@ -102,7 +105,10 @@ const StyledButton = styled.button<ButtonStyleProps>`
       color: ${({ theme }) => theme.colors[props.color]};
       border: 1px solid ${({ theme }) => theme.colors[props.color]};
       &:hover {
-        background-color: rgba(25, 118, 210, 0.04);
+        background-color: rgba(25, 118, 210, 0.1);
+      }
+      &:active {
+        background-color: rgba(25, 118, 210, 0.2);
       }
     `}
 `;
