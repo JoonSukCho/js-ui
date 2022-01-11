@@ -28,19 +28,19 @@ const skeletonGradient = keyframes`
 `;
 
 const SkeletonContainer = styled.div<SkeletonProps>`
-  width: ${(props) => `${props.width}px`};
-  height: ${(props) => `${props.height}px`};
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   animation: ${skeletonGradient} 1.8s infinite ease-in-out;
   -webkit-animation: ${skeletonGradient} 1.8s infinite ease-in-out;
 
   /* variant */
-  ${(props) =>
-    props.variant === 'text' &&
+  ${({ variant }) =>
+    variant === 'text' &&
     css`
       border-radius: 8px;
     `}
-  ${(props) =>
-    props.variant === 'circle' &&
+  ${({ variant }) =>
+    variant === 'circle' &&
     css`
       border-radius: 50%;
     `}

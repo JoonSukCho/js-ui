@@ -26,6 +26,12 @@ export default {
         options: ['text', 'contained', 'outlined'],
       },
     },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'medium', 'large'],
+      },
+    },
     onClick: { action: 'click event : ' },
   },
 } as Meta;
@@ -37,4 +43,5 @@ basic.args = {
   children: 'BUTTON',
   color: 'primary',
   variant: 'contained',
+  size: 'medium',
 };
