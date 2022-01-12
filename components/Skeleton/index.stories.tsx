@@ -15,7 +15,9 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SkeletonProps> = (args) => <Skeleton {...args} />;
+const Template: Story<SkeletonProps> = (args) => {
+  return <Skeleton {...args} />;
+};
 
 export const basic = Template.bind({});
 basic.args = {
