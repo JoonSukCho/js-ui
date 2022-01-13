@@ -4,7 +4,7 @@ import { Transition, TransitionStatus } from 'react-transition-group';
 
 interface ModalStyleProps {
   /** transition 상태 */
-  transitionState: TransitionStatus;
+  transitionState?: TransitionStatus;
   /** Modal Open transition duration (ms) */
   timeout?: number;
 }
@@ -23,20 +23,22 @@ const Modal = ({ children, open, onClose, timeout = 150 }: ModalProps) => {
     <>
       <Transition unmountOnExit in={open} timeout={timeout}>
         {(transitionState) => (
-          <ModalContainer
+          <BackDrop
             onClick={onClose}
             transitionState={transitionState}
             timeout={timeout}
           >
-            <div onClick={(e) => e.stopPropagation()}>{children}</div>
-          </ModalContainer>
+            <ModalContainer onClick={(e) => e.stopPropagation()}>
+              {children}
+            </ModalContainer>
+          </BackDrop>
         )}
       </Transition>
     </>
   );
 };
 
-const ModalContainer = styled.div<ModalStyleProps>`
+const BackDrop = styled.div<ModalStyleProps>`
   width: 100%;
   height: 100vh;
   position: absolute;
@@ -70,6 +72,12 @@ const ModalContainer = styled.div<ModalStyleProps>`
     css`
       opacity: 0;
     `}
+`;
+
+const ModalContainer = styled.div`
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
 `;
 
 export default Modal;
