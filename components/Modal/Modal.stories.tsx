@@ -26,7 +26,14 @@ const ModalContent = styled.div`
 export default {
   title: 'components/Modal',
   component: Modal,
-  argTypes: {},
+  argTypes: {
+    transitionState: {
+      table: { disable: true },
+    },
+    onClose: {
+      table: { disable: true },
+    },
+  },
 } as Meta;
 
 const Template: Story<ModalProps> = (args) => {
@@ -52,7 +59,9 @@ const Template: Story<ModalProps> = (args) => {
       </p>
       <br />
       <Button onClick={handleOpenModal}>Open Modal</Button>
-      <Modal {...args} open={open} onClose={handleCloseModal} />
+      <Modal {...args} open={open} onClose={handleCloseModal}>
+        <ModalContent>Modal Contents</ModalContent>
+      </Modal>
     </TemplateContainer>
   );
 };
@@ -61,4 +70,5 @@ export const basic = Template.bind({});
 basic.args = {
   children: <ModalContent>Modal Contents</ModalContent>,
   open: false,
+  timeout: 150,
 };

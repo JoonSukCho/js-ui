@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface ButtonStyleProps {
   /** 버튼 색상 */
-  color: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary';
   /** 버튼 모양 */
   variant?: 'text' | 'contained' | 'outlined';
   /** 버튼 크기 */
@@ -16,7 +16,13 @@ export interface ButtonProps extends ButtonStyleProps {
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ children, color, variant, size, onClick }: ButtonProps) => {
+const Button = ({
+  children,
+  color = 'primary',
+  variant = 'contained',
+  size = 'medium',
+  onClick,
+}: ButtonProps) => {
   return (
     <StyledButton
       type="button"
@@ -29,13 +35,6 @@ const Button = ({ children, color, variant, size, onClick }: ButtonProps) => {
     </StyledButton>
   );
 };
-
-Button.defaultProps = {
-  children: 'BUTTON',
-  color: 'primary',
-  variant: 'contained',
-  size: 'medium',
-} as ButtonProps;
 
 const StyledButton = styled.button<ButtonStyleProps>`
   cursor: pointer;
