@@ -15,7 +15,7 @@ export interface ModalProps extends ModalStyleProps {
   /** Modal Open Flag */
   open: boolean;
   /** Modal Close Function */
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 const Modal = ({ children, open, onClose, timeout = 150 }: ModalProps) => {
@@ -38,7 +38,7 @@ const Modal = ({ children, open, onClose, timeout = 150 }: ModalProps) => {
 
 const ModalContainer = styled.div<ModalStyleProps>`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   left: 0;
   top: 0;
@@ -46,9 +46,8 @@ const ModalContainer = styled.div<ModalStyleProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(1.5px);
-  border-radius: 10px;
 
   transition: all ${({ timeout }) => `${timeout}ms`} ease-in-out;
   ${({ transitionState }) =>

@@ -27,6 +27,9 @@ export default {
   title: 'components/Modal',
   component: Modal,
   argTypes: {
+    children: {
+      table: { disable: true },
+    },
     transitionState: {
       table: { disable: true },
     },
@@ -68,7 +71,6 @@ const Template: Story<ModalProps> = (args) => {
 
 export const basic = Template.bind({});
 basic.args = {
-  children: <ModalContent>Modal Contents</ModalContent>,
   open: false,
   timeout: 150,
 };
