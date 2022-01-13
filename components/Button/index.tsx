@@ -4,9 +4,9 @@ interface ButtonStyleProps {
   /** 버튼 색상 */
   color: 'primary' | 'secondary';
   /** 버튼 모양 */
-  variant: 'text' | 'contained' | 'outlined';
+  variant?: 'text' | 'contained' | 'outlined';
   /** 버튼 크기 */
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 }
 
 export interface ButtonProps extends ButtonStyleProps {
