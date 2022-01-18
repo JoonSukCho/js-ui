@@ -6,14 +6,7 @@ import Modal, { ModalProps } from './Modal';
 import Button from '../Button';
 import ModalHeader, { ModalHeaderProps } from './ModalHeader';
 import ModalFooter from './ModalFooter';
-
-const TemplateContainer = styled.div`
-  display: flex;
-  background-color: white;
-  flex-direction: column;
-  width: 50%;
-  height: 100vh;
-`;
+import TemplateContainer from '../Storybook/TemplateContainer';
 
 const ModalContent = styled.div`
   display: flex;
@@ -23,6 +16,7 @@ const ModalContent = styled.div`
   max-width: 480px;
   height: 300px;
   max-height: 620px;
+  padding: 8px;
 `;
 
 export default {

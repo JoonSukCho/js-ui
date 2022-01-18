@@ -1,6 +1,7 @@
 import React from 'react';
 import Button, { ButtonProps } from './index';
 import { Story, Meta } from '@storybook/react';
+import TemplateContainer from '../Storybook/TemplateContainer';
 
 /**
  * Controls에 대한 정보는 해당 컴포넌트의 interface에서 어느정도 정의 할 수 있다.
@@ -37,7 +38,11 @@ export default {
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => {
-  return <Button {...args} />;
+  return (
+    <TemplateContainer>
+      <Button {...args} />
+    </TemplateContainer>
+  );
 };
 
 export const basic = Template.bind({});
