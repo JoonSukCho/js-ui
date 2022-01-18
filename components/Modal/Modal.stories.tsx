@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useArgs } from '@storybook/client-api';
 import Modal, { ModalProps } from './Modal';
 import Button from '../Button';
-import ModalHeader from './ModalHeader';
+import ModalHeader, { ModalHeaderProps } from './ModalHeader';
 import ModalFooter from './ModalFooter';
 
 const TemplateContainer = styled.div`
@@ -20,7 +20,9 @@ const ModalContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 300px;
+  max-width: 480px;
   height: 300px;
+  max-height: 620px;
 `;
 
 export default {
@@ -69,8 +71,7 @@ basic.args = {
   timeout: 150,
 };
 
-// With Header
-const WithHeaderTemplate: Story<ModalProps> = (args) => {
+const ExampleTemplate: Story<ModalProps> = (args) => {
   const [{ open }, updateArgs] = useArgs();
 
   const handleOpenModal = useCallback(() => {
@@ -83,48 +84,20 @@ const WithHeaderTemplate: Story<ModalProps> = (args) => {
 
   return (
     <TemplateContainer>
-      <h1>Modal With Header</h1>
+      <h1>With Header and Footer Example</h1>
       <br />
       <Button onClick={handleOpenModal}>Open Modal</Button>
       <Modal {...args} open={open} onClose={handleCloseModal}>
-        <ModalHeader />
+        <ModalHeader title="Modal Header" onClose={handleCloseModal} />
         <ModalContent>Modal Contents</ModalContent>
+        <ModalFooter>Footer Button</ModalFooter>
       </Modal>
     </TemplateContainer>
   );
 };
-export const withHeader = WithHeaderTemplate.bind({});
-withHeader.args = {
-  open: false,
-  timeout: 150,
-};
 
-// With Footer
-const WithFooterTemplate: Story<ModalProps> = (args) => {
-  const [{ open }, updateArgs] = useArgs();
-
-  const handleOpenModal = useCallback(() => {
-    updateArgs({ open: true });
-  }, []);
-
-  const handleCloseModal = useCallback(() => {
-    updateArgs({ open: false });
-  }, []);
-
-  return (
-    <TemplateContainer>
-      <h1>Modal With Footer</h1>
-      <br />
-      <Button onClick={handleOpenModal}>Open Modal</Button>
-      <Modal {...args} open={open} onClose={handleCloseModal}>
-        <ModalContent>Modal Contents</ModalContent>
-        <ModalFooter />
-      </Modal>
-    </TemplateContainer>
-  );
-};
-export const withFooter = WithFooterTemplate.bind({});
-withFooter.args = {
+export const example = ExampleTemplate.bind({});
+example.args = {
   open: false,
   timeout: 150,
 };

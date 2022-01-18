@@ -1,8 +1,18 @@
 import React, { useEffect } from 'react';
-import Modal from 'components/Modal/Modal';
+import styled from 'styled-components';
 
-const ModalFooter = () => {
-  return <div>Modal Footer</div>;
+export interface ModalFooterProps {
+  children: React.ReactNode;
+}
+
+const ModalFooter = ({ children }: ModalFooterProps) => {
+  return <FooterContainer>{children}</FooterContainer>;
 };
+
+const FooterContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+`;
 
 export default ModalFooter;
