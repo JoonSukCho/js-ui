@@ -26,16 +26,16 @@ const Template: Story<IconButtonProps> = (args) => {
   return (
     <TemplateContainer>
       <h1>
-        아이콘 종류는&nbsp;
+        아이콘은&nbsp;
         <a
           style={{ fontWeight: 'bold', color: 'blue' }}
           rel="noreferrer"
           href="https://react-icons.github.io/react-icons"
           target="_blank"
         >
-          여기
+          react-icons
         </a>
-        서 확인
+        를 사용할 것.
       </h1>
       <br />
       <IconButton {...args} />
