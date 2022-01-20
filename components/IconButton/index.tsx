@@ -45,6 +45,10 @@ const Button = styled.button<IconButtonStyleProps>`
   &:hover {
     background-color: rgba(0, 0, 0, 0.04);
   }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
 `;
 
 export default IconButton;
