@@ -41,6 +41,7 @@ const Modal = ({ children, open, onClose, timeout = 150 }: ModalProps) => {
 const BackDrop = styled.div<ModalStyleProps>`
   width: 100%;
   height: 100vh;
+  padding: 1rem;
   position: absolute;
   left: 0;
   top: 0;
@@ -75,6 +76,9 @@ const BackDrop = styled.div<ModalStyleProps>`
 `;
 
 const ModalContainer = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 800px;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%),
