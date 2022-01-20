@@ -9,14 +9,11 @@ import ModalFooter from './ModalFooter';
 import TemplateContainer from '../Storybook/TemplateContainer';
 
 const ModalContent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 200px;
   max-height: 520px;
-  padding: 8px;
-
+  padding: 1rem;
+  overflow: auto;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 `;
@@ -90,7 +87,16 @@ const ExampleTemplate: Story<ModalProps> = (args) => {
       <Button onClick={handleOpenModal}>Open Modal</Button>
       <Modal {...args} open={open} onClose={handleCloseModal}>
         <ModalHeader title="Modal Header" onClose={handleCloseModal} />
-        <ModalContent>Modal Contents</ModalContent>
+        <ModalContent>
+          <h2 style={{ fontWeight: 'bold' }}>Lorem Ipsum</h2>
+          <br />
+          <p>
+            is simply dummy text of the printing and typesetting industry. Lorem
+            Ipsum has been the industry's standard dummy text ever since the
+            1500s, when an unknown printer took a galley of type and scrambled
+            it to make a type specimen book.
+          </p>
+        </ModalContent>
         <ModalFooter>
           <Button onClick={handleConfirm} color="success">
             Confirm

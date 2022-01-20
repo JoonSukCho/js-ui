@@ -12,6 +12,7 @@ const ModalFooter = ({ children }: ModalFooterProps) => {
 const FooterContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
   padding: 8px;
 `;
 
