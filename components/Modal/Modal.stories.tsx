@@ -12,11 +12,14 @@ const ModalContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  max-width: 480px;
-  height: 300px;
-  max-height: 620px;
+  width: 500px;
+  max-width: 680px;
+  height: 200px;
+  max-height: 520px;
   padding: 8px;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 `;
 
 export default {
@@ -76,6 +79,11 @@ const ExampleTemplate: Story<ModalProps> = (args) => {
     updateArgs({ open: false });
   }, []);
 
+  const handleConfirm = useCallback(() => {
+    console.log('click confirm');
+    updateArgs({ open: false });
+  }, []);
+
   return (
     <TemplateContainer>
       <h1>With Header and Footer Example</h1>
@@ -84,7 +92,14 @@ const ExampleTemplate: Story<ModalProps> = (args) => {
       <Modal {...args} open={open} onClose={handleCloseModal}>
         <ModalHeader title="Modal Header" onClose={handleCloseModal} />
         <ModalContent>Modal Contents</ModalContent>
-        <ModalFooter>Footer Button</ModalFooter>
+        <ModalFooter>
+          <Button onClick={handleConfirm} color="success">
+            Confirm
+          </Button>
+          <Button onClick={handleCloseModal} color="secondary">
+            Close
+          </Button>
+        </ModalFooter>
       </Modal>
     </TemplateContainer>
   );
