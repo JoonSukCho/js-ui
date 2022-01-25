@@ -22,8 +22,8 @@ const IconButton = ({
   onClick,
 }: IconButtonProps) => {
   return (
-    <Button type="button" onClick={onClick} color={color}>
-      <Icon size={size} />
+    <Button type="button" onClick={onClick}>
+      <Icon size={size} color={color} />
     </Button>
   );
 };
